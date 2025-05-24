@@ -1,22 +1,10 @@
-import os
-import sys
-import logging
-
-logging_str = "[%(asctime)s: %(levelname)s: %(module)s: %(message)s]"
-
-log_dir = "logs"
-log_filepath = os.path.join(log_dir,"running_logs.log")
-os.makedirs(log_dir, exist_ok=True)
+artifacts_root: artifacts
 
 
-logging.basicConfig(
-    level= logging.INFO,
-    format= logging_str,
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://drive.google.com/file/d/1z0mreUtRmR-P-magILsDR3T7M6IkGXtY/view?usp=sharing
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
 
-    handlers=[
-        logging.FileHandler(log_filepath),
-        logging.StreamHandler(sys.stdout)
-    ]
-)
 
-logger = logging.getLogger("cnnClassifierLogger")
