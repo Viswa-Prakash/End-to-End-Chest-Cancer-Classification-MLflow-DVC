@@ -23,6 +23,8 @@ conda create -n chest python=3.10 -y
 ```bash
 conda activate chest
 
+```bash
+pip install -r requirements.txt
 
 ## MLflow
 
@@ -36,12 +38,16 @@ conda activate chest
 ### dagshub
 [dagshub](https://dagshub.com/)
 
-MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/chest-Disease-Classification-MLflow-DVC.mlflow \
-MLFLOW_TRACKING_USERNAME=entbappy \
-MLFLOW_TRACKING_PASSWORD=6824692c47a4545eac5b10041d5c8edbcef0 \
-python script.py
+MLFLOW_TRACKING_URI=https://dagshub.com/Viswa-Prakash/End-to-End-Chest-Cancer-Classification-MLflow-DVC.mlflow
 
-Run this to export as env variables:
+import dagshub
+dagshub.init(repo_owner='Viswa-Prakash', repo_name='End-to-End-Chest-Cancer-Classification-MLflow-DVC', mlflow=True)
+
+import mlflow
+with mlflow.start_run():
+  mlflow.log_param('parameter name', 'value')
+  mlflow.log_metric('metric name', 1)
+
 
 ```bash
 
